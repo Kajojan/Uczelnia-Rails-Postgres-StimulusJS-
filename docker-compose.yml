@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: uczelnia123
+      POSTGRES_PASSWORD: uczelnia123
+      POSTGRES_DB: uczelnia
+    ports:
+      - "5432:5432"
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+
+  web:
+    build: .
+    command: bash -c "bin/rails db:create db:migrate && bin/rails server -b 0.0.0.0"
+    volumes:
+      - .:/app
+    ports:
+      - "3000:3000"
+    environment:
+      RAILS_ENV: development
+      DATABASE_HOST: db
+      DATABASE_USER: uczelnia123
+      DATABASE_PASSWORD: uczelnia123
+      DATABASE_NAME: uczelnia
+      SECRET_KEY_BASE: secret
+    depends_on:
+      - db
+
+volumes:
+  pg_data:
