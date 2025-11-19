@@ -1,2 +1,41 @@
-<h1>Courses#index</h1>
-<p>Find me in app/views/courses/index.html.erb</p>
+<div class="flex flex-col m-auto w-8/12">
+    <div class="flex justify-between mb-4">
+        <h1 class="text-2xl font-bold mb-4">Wszystkie kursy</h1>
+        <%= link_to "Dodaj nowy Kurs +", new_course_path, class: "hover:underline text-2xl font-bold mb-4" %> 
+    </div>
+    <div data-controller="course-search">
+        <input
+            data-course-search-target="input"
+            data-action="input->course-search#search"
+            type="text"
+            placeholder="Szukaj kursów..."
+            class="w-full border p-2 rounded mb-4"
+        >
+        <div class="flex">
+            <select
+                data-course-search-target="sort"
+                data-action="change->course-search#sort"
+                class="border p-2 rounded mb-4"
+            >
+                <option value="name_asc">Nazwa A–Z</option>
+                <option value="name_desc">Nazwa Z–A</option>
+                <option value="code_asc">Kod A–Z</option>
+                <option value="code_desc">Kod Z–A</option>
+            </select>
+        </div>
+        
+          <div data-course-search-target="list" class="grid grid-cols-3 gap-4">
+                <% @courses.each do |course| %>
+                <div
+                    data-course-search-target="card"
+                    data-name="<%= course.name.downcase %>"
+                    data-code="<%= course.code.downcase %>"
+                >
+                    <%= render "courses/course_card", course: course %>
+                </div>
+                <% end %>
+            </div>
+
+
+    </div>
+</div>
