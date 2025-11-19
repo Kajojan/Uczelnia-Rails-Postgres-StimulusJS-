@@ -1,0 +1,13 @@
+class CreateStudentCourses < ActiveRecord::Migration[8.0]
+  def change
+    create_table :student_courses do |t|
+      t.integer :student_id
+      t.integer :teacher_id
+      t.foreign_key :users, column: :student_id 
+      t.foreign_key :courses, column: :teacher_id 
+
+
+      t.timestamps
+    end
+  end
+end
