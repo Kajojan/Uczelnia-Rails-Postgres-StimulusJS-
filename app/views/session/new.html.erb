@@ -1,0 +1,27 @@
+<div class="w-full flex justify-center">
+  <div class="text-center flex flex-col gap-2 border p-5 rounded-lg" >
+    <h1 class="font-bold text-2xl ">Logowanie</h1>
+
+  <%= form_with url: login_path, local: true, html: { class: "flex flex-col gap-4" } do |f|  %>
+    <div>
+      <%=  f.label :email %><br>
+      <%= f.email_field :email,  class: "border p-2 rounded" %>
+    </div>
+
+    <div>
+      <%= f.label :password %><br>
+      <%= f.password_field :password,  class: "border p-2 rounded" %>
+    </div>
+
+    <div>
+      <%= f.submit "Zaloguj",  class: "cursor-pointer" %>
+    </div>
+  <% end %>
+
+  <% if flash[:alert] %>
+    <p style="color:red;"><%= flash[:alert] %></p>
+  <% end %>
+
+  </div>
+
+</div>
