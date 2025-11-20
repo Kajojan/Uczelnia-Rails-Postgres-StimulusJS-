@@ -12,6 +12,13 @@ student = User.find_or_create_by(email: "jankowski@test.com") do |user|
   user.role       = "student"
 end
 
+student2 = User.find_or_create_by(email: "pawel@test.com") do |user|
+  user.first_name = "PawełStudent"
+  user.last_name  = "Kowalski"
+  user.password   = "123456"
+  user.role       = "student"
+end
+
 course1 = Course.find_or_create_by(code: "INF101") do |c|
   c.name = "Informatyka"
   c.teacher = teacher
@@ -33,11 +40,27 @@ course4 = Course.find_or_create_by(code: "FIZ101") do |c|
 end
 
 sc = StudentCourse.find_or_create_by(student: student, course: course1)
+sc2 = StudentCourse.find_or_create_by(student: student2, course: course1)
 
 
 
-grades = [3, 4.5, 5, 2]
 
-grades.each do |val|
-  Grade.find_or_create_by(student_course: sc, value: val)
+grades = [
+  { value: 3, grade_desc: "Kolokwium" },
+  { value: 4.5, grade_desc: "Aktywność" },
+  { value: 5, grade_desc: "Prezentacja" },
+  { value: 2, grade_desc: "Klokwium2" }
+]
+
+grades.each do |g|
+  Grade.find_or_create_by(student_course: sc, value: g[:value]) do |grade|
+    grade.grade_desc = g[:grade_desc]
+  end
+end
+
+
+grades.each do |g|
+  Grade.find_or_create_by(student_course: sc2, value: g[:value]) do |grade|
+    grade.grade_desc = g[:grade_desc]
+  end
 end

@@ -28,7 +28,8 @@ class GradesController < ApplicationController
     @student_course = StudentCourse.find_by(course: @course, student_id: params[:student_id])
     @grade = @student_course.grades.find(params[:grade_id])
 
-    if @grade.update(value: params[:grade])
+    if @grade.update(value: params[:grade], grade_desc: params[:grade_desc]
+)
       redirect_to course_path(@course), notice: "Ocena zaktualizowana"
     else
       redirect_to course_path(@course), alert: "Nie udało się zaktualizować oceny"
