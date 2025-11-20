@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    resources :users
+    resources :courses
+    resources :grades
+    
+    root to: "users#index"
+  end
+
   resources :users
   resources :courses do
     resources :grades, only: [:create, :update, :destroy]

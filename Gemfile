@@ -21,6 +21,8 @@ gem "tailwindcss-rails", "~> 3.3.1"
 
 gem "pg"
 
+gem "administrate"
+
 gem "bcrypt"
 
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]

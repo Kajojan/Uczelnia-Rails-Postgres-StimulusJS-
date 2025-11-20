@@ -28,6 +28,9 @@
           <%= link_to "Uczelnia", root_path, class: "text-3xl font-bold" %>
         <nav class="flex gap-2">
           <% if current_user %>
+           <% if current_user.role == 'admin' %>
+            <%= link_to "Admin Panel", admin_root_path, class: "px-2 hover:underline" %>
+           <% end %>
             <%= link_to "Kursy", courses_path, class: "px-2 hover:underline" %>
             <%= link_to current_user.first_name, user_path(current_user), class: "px-2 hover:underline" %>
             <%= button_to "Logout", logout_path, method: :delete, class: "px-2 hover:underline" %>

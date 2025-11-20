@@ -58,9 +58,16 @@ grades.each do |g|
   end
 end
 
-
 grades.each do |g|
   Grade.find_or_create_by(student_course: sc2, value: g[:value]) do |grade|
     grade.grade_desc = g[:grade_desc]
   end
+end
+
+
+User.find_or_create_by(email: "admin@test.com") do |user|
+  user.first_name = "admin"
+  user.last_name  = "admin"
+  user.password   = "123456"
+  user.role       = "admin"
 end
