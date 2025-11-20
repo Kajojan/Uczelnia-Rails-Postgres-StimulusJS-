@@ -1,5 +1,5 @@
-<div>
-    <div class="flex gap-3" >
+<div class="m-auto w-9/12">
+    <div class="flex flex-col sm:flex-row gap-3" >
         <div class="w-52 h-52 ">
             <img class="rounded-full border w-full h-full"  src="" alt="Ico image">
         </div>
@@ -13,19 +13,23 @@
 
    <% if @coursesTaken.present? %>
   <div class="mt-6">
-    <h1>Bierzesz Udział:</h1>
+    <h1 class="my-6 text-1xl" >Bierzesz Udział:</h1>
+    <div class="flex flex-col gap-3">
     <% @coursesTaken.each do |course| %>
       <%= render "courses/course_card", course: course %>
     <% end %>
+    </div>
   </div>
 <% end %>
 
 <% if @coursesCreated.present? %>
   <div class="mt-6">
-    <h1>Twoje Kursy:</h1>
-    <% @coursesCreated.each do |course| %>
-      <%= render "courses/course_card", course: course %>
-    <% end %>
+    <h1 class="my-6 text-1xl">Twoje Kursy:</h1>
+     <div class="flex flex-col gap-3">
+      <% @coursesCreated.each do |course| %>
+        <%= render "courses/course_card", course: course %>
+      <% end %>
+     </div>
   </div>
 <% end %>
 

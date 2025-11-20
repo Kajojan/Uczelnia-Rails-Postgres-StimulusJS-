@@ -1,12 +1,6 @@
 class GradesController < ApplicationController
   before_action :require_teacher, only: [:new, :create]
 
-  def index
-  end
-
-  def show
-  end
-
   def new
       @grade = Grade.new
   end
@@ -14,17 +8,15 @@ class GradesController < ApplicationController
   def create
     @course = Course.find(params[:course_id])
     @student_course = StudentCourse.find_by(course: @course, student_id: params[:student_id])
-    @new_grade = Grade.new(student_course_id: @student_course.id, value: params[:grade][:value])
+    @new_grade = Grade.new(student_course_id: @student_course.id, value: params[:grade][:value], grade_desc: params[:grade][:grade_desc])
+    
     if @new_grade.save
       redirect_to course_path(@course), notice: "Ocena zaktualizowana"
     else
       redirect_to course_path(@course), alert: "Nie udało się zaktualizować oceny"
     end
   end
-
-  def edit
-  end
-
+  
   def update
     @course = Course.find(params[:course_id])
     @student_course = StudentCourse.find_by(course: @course, student_id: params[:student_id])

@@ -1,4 +1,5 @@
 import { Controller } from "@hotwired/stimulus"
+import { csrfFetch } from "lib/csr_fetch"
 
 // Connects to data-controller="grade"
 export default class extends Controller {
@@ -13,10 +14,12 @@ export default class extends Controller {
   }
 
   remove(event) {
-    event.preventDefault()
-    
-    fetch(this.gradeTarget.dataset.url, { method: "DELETE", headers: { "Accept": "application/json" } })
-      .then(() => this.gradeTarget.remove())
+    const gradeDiv = event.currentTarget.closest('[data-grade-target="grade"]');
+    const url = gradeDiv.dataset.url;
+
+    csrfFetch(url, { method: "DELETE" })
+      .then(() => gradeDiv.remove());
+      
   }
 
   newGradeOpen(){

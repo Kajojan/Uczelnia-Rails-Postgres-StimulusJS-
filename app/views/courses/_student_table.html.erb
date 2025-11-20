@@ -1,53 +1,55 @@
-<table class="min-w-full border border-gray-300 rounded" >
-    <thead class="bg-gray-100">
-        <tr>
-            <th class="border p-2 text-left">
-                <div class="flex justify-between">
-                        Ocena
-                    <button 
-                        data-action="click->sort#sort"
-                        data-direction="value"
-                        > 
-                        ↑↓
-                    </button>
-                </div>
-            </th>
-            <th class="border p-2 text-left">
-                <div class="flex justify-between">
+<div class="overflow-x-auto  ">
+    <table class="min-w-screen border border-gray-300 rounded" >
+        <thead class="bg-gray-100">
+            <tr>
+                <th class="border p-2 text-left">
+                    <div class="flex justify-between">
+                            Ocena
+                        <button 
+                            data-action="click->sort#sort"
+                            data-direction="value"
+                            > 
+                            ↑↓
+                        </button>
+                    </div>
+                </th>
+                <th class="border p-2 text-left">
+                    <div class="flex justify-between">
 
-                Opis oceny
-                <button 
-                    data-action="click->sort#sort"
-                    data-direction="grade_desc"
-                    > 
-                    ↑↓
-                </button>
-                </div>
-            </th>
-            <th class="border p-2 text-left">
-                <div class="flex justify-between">
-                    Data dodania
+                    Opis oceny
                     <button 
                         data-action="click->sort#sort"
-                        data-direction="created_at"
+                        data-direction="grade_desc"
                         > 
                         ↑↓
                     </button>
-                </div>
-            </th>
-        </tr>
-    </thead>
-    <tbody data-sort-target="tbody">
-        <% @grade.each do |grade| %>
-            <tr class="border-b" data-sort-row data-value="<%= grade.value %>" data-grade_desc="<%= grade.grade_desc %>" data-created_at="<%= grade.created_at.to_i %>">
-            <td class="border p-2">
-                <h1 class="text-center text-2xl font-bold"><%= grade.value %></h1>
-            </td>  
-            <td class="border p-2"><%= grade.grade_desc %></td>
-            <td class="border p-2">
-                <p><%= grade.created_at.strftime("%Y-%m-%d %H:%M") %></p>
-            </td>   
-            <tr> 
-        <% end %>
-    </tbody>
-</table>
+                    </div>
+                </th>
+                <th class="border p-2 text-left">
+                    <div class="flex justify-between">
+                        Data dodania
+                        <button 
+                            data-action="click->sort#sort"
+                            data-direction="created_at"
+                            > 
+                            ↑↓
+                        </button>
+                    </div>
+                </th>
+            </tr>
+        </thead>
+        <tbody data-sort-target="tbody">
+            <% @grade.each do |grade| %>
+                <tr class="border-b" data-sort-row data-value="<%= grade.value %>" data-grade_desc="<%= grade.grade_desc %>" data-created_at="<%= grade.created_at.to_i %>">
+                <td class="border p-2">
+                    <h1 class="text-center text-2xl font-bold"><%= grade.value %></h1>
+                </td>  
+                <td class="border p-2"><%= grade.grade_desc %></td>
+                <td class="border p-2">
+                    <p><%= grade.created_at.strftime("%Y-%m-%d %H:%M") %></p>
+                </td>   
+                <tr> 
+            <% end %>
+        </tbody>
+    </table>
+</div>

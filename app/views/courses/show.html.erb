@@ -1,5 +1,5 @@
 <div class="flex flex-col justify-center" data-controller="grade sort course" >
-    <h1 class="mb-4 text-center text-6xl font-bold"><%= @course.name %></h1>
+    <h1 class="mb-4 text-center text-3xl sm:text-6xl font-bold"><%= @course.name %></h1>
     <div class="mt-4">
        <div>
         <% if current_user == @course.teacher %>
@@ -10,7 +10,7 @@
             <% elsif @student_course.nil? %>
                 <h1 data-course-target="sign_up" data-url="<%= course_student_courses_path(@course) %>" data-action="click->course#sign" class=" cursor-pointer hover:underline mb-4 text-center text-2xl font-bold">Zapisz się</h1>
             <% else %>
-                <h1 class="mb-4 text-center text-6xl font-bold">Brak ocen</h1>
+                <h1 class="mb-4 text-center text-3xl sm:text-6xl font-bold">Brak ocen</h1>
             <% end %>
         <% end %>
         </div>

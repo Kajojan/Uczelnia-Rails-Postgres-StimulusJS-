@@ -2,18 +2,19 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="course-search"
 export default class extends Controller {
-    static targets = ["input", "list","card", "sort"]
+    static targets = ["input", "card", "sort"]
     
 
   connect() {
   }
 
   search() {
+    
     const query = this.inputTarget.value.toLowerCase()
     
-    this.listTargets.forEach((card) => {
+    this.cardTargets.forEach((card) => {
       const text = card.innerText.toLowerCase()
-
+      
       card.style.display = text.includes(query) ? "" : "none"
     })
   }
