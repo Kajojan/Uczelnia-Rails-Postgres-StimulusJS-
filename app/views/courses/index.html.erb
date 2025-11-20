@@ -1,7 +1,7 @@
 <div class="flex flex-col m-auto w-9/12">
     <div class="flex flex-col-reverse sm:flex-row justify-between mb-4">
         <h1 class="text-2xl mb-4">Wszystkie kursy</h1>
-        <% if ["admin", "teacher"].include?(current_user.role) %> 
+        <% if ["admin", "teacher"].include?(current_user&.role) %> 
             <%= link_to "Dodaj nowy Kurs +", new_course_path, class: "hover:underline text-2xl py-3 sm:py-0 font-bold mb-4" %> 
         <% end %>
     </div>

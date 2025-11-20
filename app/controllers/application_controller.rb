@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
   end
 
   def require_teacher
-    unless user_signed_in? && ["teacher", "admin"].include?(current_user.role)
+    unless user_signed_in? && ["teacher", "admin"].include?(current_user&.role)
       redirect_to root_path, alert: "Nie masz uprawnień do wykonania tej akcji"
     end
   end

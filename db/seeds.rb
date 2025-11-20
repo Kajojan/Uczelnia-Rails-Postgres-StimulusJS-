@@ -1,19 +1,19 @@
-teacher = User.find_or_create_by(email: "kajetan@test.com") do |user|
-  user.first_name = "kajetanTeacher"
-  user.last_name  = "jankowski"
-  user.password   = "123456"
+teacher = User.find_or_create_by(email: "kowalski@test.com") do |user|
+  user.first_name = "Jan"
+  user.last_name  = "Kowalski"
+  user.password   = "Kowalski"
   user.role       = "teacher"
 end
 
 student = User.find_or_create_by(email: "jankowski@test.com") do |user|
-  user.first_name = "kajetanStudent"
+  user.first_name = "kajetan"
   user.last_name  = "jankowski"
-  user.password   = "123456"
+  user.password   = "kajetan123"
   user.role       = "student"
 end
 
 student2 = User.find_or_create_by(email: "pawel@test.com") do |user|
-  user.first_name = "PawełStudent"
+  user.first_name = "Paweł"
   user.last_name  = "Kowalski"
   user.password   = "123456"
   user.role       = "student"
@@ -66,6 +66,6 @@ end
 User.find_or_create_by(email: "admin@test.com") do |user|
   user.first_name = "admin"
   user.last_name  = "admin"
-  user.password   = "123456"
+  user.password   = "admin"
   user.role       = "admin"
 end
