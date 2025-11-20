@@ -1,4 +1,6 @@
 class GradesController < ApplicationController
+  before_action :require_teacher, only: [:new, :create]
+
   def index
   end
 

@@ -10,9 +10,9 @@ Rails.application.routes.draw do
   resources :users
   resources :courses do
     resources :grades, only: [:create, :update, :destroy]
+    resources :student_courses, only: [:create, :destroy] 
   end
 
-  resources :student_courses
   resources :grades
 
   root to: 'users#new'
@@ -22,5 +22,8 @@ Rails.application.routes.draw do
   get "/login", to: "session#new"
   post "/login", to: "session#create"
   delete "/logout", to: "session#destroy"
+
+  match "*path", to: "application#not_found", via: :all
+
 
 end

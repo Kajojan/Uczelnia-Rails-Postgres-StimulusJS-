@@ -1,4 +1,7 @@
 class CoursesController < ApplicationController
+  before_action :require_teacher, only: [:new, :create]
+  before_action :authenticate_user!, only: [:show]
+
   def index
     @courses = Course.all
   end

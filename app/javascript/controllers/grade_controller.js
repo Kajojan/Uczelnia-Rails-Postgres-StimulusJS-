@@ -14,7 +14,6 @@ export default class extends Controller {
 
   remove(event) {
     event.preventDefault()
-    console.log(this.gradeTarget.dataset);
     
     fetch(this.gradeTarget.dataset.url, { method: "DELETE", headers: { "Accept": "application/json" } })
       .then(() => this.gradeTarget.remove())

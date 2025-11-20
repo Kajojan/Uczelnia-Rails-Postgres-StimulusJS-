@@ -1,7 +1,9 @@
 <div class="flex flex-col m-auto w-8/12">
     <div class="flex justify-between mb-4">
         <h1 class="text-2xl font-bold mb-4">Wszystkie kursy</h1>
-        <%= link_to "Dodaj nowy Kurs +", new_course_path, class: "hover:underline text-2xl font-bold mb-4" %> 
+        <% if ["admin", "teacher"].include?(current_user.role) %> 
+            <%= link_to "Dodaj nowy Kurs +", new_course_path, class: "hover:underline text-2xl font-bold mb-4" %> 
+        <% end %>
     </div>
     <div data-controller="course-search">
         <input

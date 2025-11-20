@@ -43,8 +43,6 @@ sc = StudentCourse.find_or_create_by(student: student, course: course1)
 sc2 = StudentCourse.find_or_create_by(student: student2, course: course1)
 
 
-
-
 grades = [
   { value: 3, grade_desc: "Kolokwium" },
   { value: 4.5, grade_desc: "Aktywność" },
