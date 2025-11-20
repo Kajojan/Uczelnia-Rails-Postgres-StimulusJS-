@@ -1,2 +1,45 @@
-<h1>Courses#new</h1>
-<p>Find me in app/views/courses/new.html.erb</p>
+<div class="w-9/12 flex m-auto justify-between"
+     data-controller="course-preview" >
+    <div style="min-width: 300px">
+        <h1 class="text-2xl font-bold mb-4">Podgląd</h1>
+        <div class="border p-4 rounded shadow hover:shadow-lg transition w-">
+            <h2 class="text-xl font-semibold"
+                data-course-preview-target="previewName"><%= @course.name || "Name" %></h2>
+            <p class="text-gray-600"
+                data-course-preview-target="previewCode"><%= @course.code || "C123" %></p>
+            <p class="mt-2 text-sm text-gray-500">
+                Nauczyciel:
+                <%= current_user&.first_name %> <%= current_user&.last_name %>
+            </p>
+        </div>
+
+
+    </div>
+
+    <div>
+        <h1 class="text-2xl font-bold mb-4" >Dodaj</h1>
+            
+         <%= form_with model: @course, local: true , class: "flex flex-col gap-3 justify-center align-center rounded border p-4" do |f| %>
+            <div class="flex gap-3">
+                <%= f.label :name %>
+                <%= f.text_field :name , class: "border p-2 rounded" ,  data: { action: "input->course-preview#preview",
+                        course_preview_target: "name" }%>
+            </div>
+
+            <div class="flex gap-3">
+                <%= f.label :code %>
+                <%= f.text_field :code, 
+                    pattern: "[A-Z]{3}[0-9]{3}",
+                    title: "np: ABC123",
+                    class: "border p-2 rounded",  
+                    data: { action: "input->course-preview#preview",
+                            course_preview_target: "code" } %>
+            </div>
+
+            <%= f.submit "Utwórz kurs", class: "underline" %>
+            <% end %>
+            
+        </div>
+
+
+</div>

@@ -8,3 +8,14 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+
+ .hidden {
+  display: none;
+}
+
+.w-screen{
+    width: 100vw;
+}
+.h-screen{
+    height: 100vh;
+}

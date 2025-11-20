@@ -1,3 +1,3 @@
 class Grade < ApplicationRecord
-  belong_to :student_courses
+  belongs_to :student_course
 end

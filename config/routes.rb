@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   resources :users
-  resources :courses
+  resources :courses do
+    resources :grades, only: [:create, :update, :destroy]
+  end
+
   resources :student_courses
   resources :grades
 
