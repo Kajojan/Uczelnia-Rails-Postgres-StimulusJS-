@@ -11,12 +11,24 @@
         </div>
     </div>
 
-    <div class="mt-6">
-        <h1>Twoje kursy</h1>
-        <% @courses.each do |course| %>
-            <%= render "courses/course_card", course: course %>
-        <% end %>
-    </div>
+   <% if @coursesTaken.present? %>
+  <div class="mt-6">
+    <h1>Bierzesz Udział:</h1>
+    <% @coursesTaken.each do |course| %>
+      <%= render "courses/course_card", course: course %>
+    <% end %>
+  </div>
+<% end %>
+
+<% if @coursesCreated.present? %>
+  <div class="mt-6">
+    <h1>Twoje Kursy:</h1>
+    <% @coursesCreated.each do |course| %>
+      <%= render "courses/course_card", course: course %>
+    <% end %>
+  </div>
+<% end %>
+
 
 </div>
 

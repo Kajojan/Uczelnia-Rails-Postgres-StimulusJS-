@@ -31,7 +31,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_11_19_080651) do
 
   create_table "student_courses", force: :cascade do |t|
     t.integer "student_id"
-    t.integer "teacher_id"
+    t.integer "course_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -49,6 +49,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_11_19_080651) do
 
   add_foreign_key "courses", "users", column: "teacher_id"
   add_foreign_key "grades", "student_courses"
-  add_foreign_key "student_courses", "courses", column: "teacher_id"
+  add_foreign_key "student_courses", "courses"
   add_foreign_key "student_courses", "users", column: "student_id"
 end

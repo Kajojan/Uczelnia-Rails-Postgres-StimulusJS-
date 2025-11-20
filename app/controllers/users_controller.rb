@@ -3,8 +3,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    @courses= current_user.courses
-
+    @coursesCreated= current_user.courses
+    @coursesTaken = current_user.courses_taken
   end
 
   def new

@@ -3,5 +3,6 @@ class User < ApplicationRecord
 
   has_many :courses, foreign_key: :teacher_id
   has_many :student_courses, foreign_key: :student_id
+  has_many :courses_taken, through: :student_courses, source: :course
   has_many :grades, through: :student_courses
 end
