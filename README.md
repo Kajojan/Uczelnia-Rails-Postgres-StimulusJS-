@@ -7,6 +7,10 @@ W projekcie zastosowano **StimulusJS** i **Tailwind CSS** dla interaktywnych ele
 Posiada także panel administracyjny dla zarządzania danymi.
 
 ---
+### DB Diagram
+[Otwórz PDF](./Uczelnia.pdf)
+
+---
 
 ## Funkcjonalności
 
